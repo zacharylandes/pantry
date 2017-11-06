@@ -99,10 +99,12 @@ class PantryTest < Minitest::Test
     pantry.restock("Cucumbers", 120)
     pantry.restock("Raw nuts", 20)
     pantry.restock("Salt", 20)
-    result = ["Cheese Pizza", "Pickles", "Peanuts"]
+    pantry.how_many_can_i_make
+    result ={"Brine"=>4, "Cucumbers"=>4, "Raw nuts"=>2, "Salt"=>2}
 
     assert_equal result, pantry.what_can_i_make
   end
+  
   def test_it_can_show_how_many_can_be_made
     pantry = Pantry.new
 
@@ -128,7 +130,7 @@ class PantryTest < Minitest::Test
     pantry.restock("Cucumbers", 120)
     pantry.restock("Raw nuts", 20)
     pantry.restock("Salt", 20)
-    result = ["Cheese Pizza", "Pickles", "Peanuts"]
+    result ={"Brine"=>4, "Cucumbers"=>4, "Raw nuts"=>2, "Salt"=>2}
 
     assert_equal result, pantry.how_many_can_i_make
   end
