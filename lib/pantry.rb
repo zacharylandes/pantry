@@ -6,7 +6,6 @@ class Pantry
   @stock = Hash.new(0)
   @shopping_list = []
   @cook_book = []
-  @cook_book = []
   end
 
   def stock_check(item)
@@ -42,8 +41,18 @@ class Pantry
   end
 
   def how_many_can_i_make
-    p @cook_book
+    @stock.map do |ingredient|
+        @cook_book.map do |recipe|
+           if recipe.ingredient_name == ingredient[0]
+             binding.pry
+           end
+        end
+      end
 
+    # @cook_book.map do |recipe|
+    #   # binding.pry
+    #  recipe.ingredients.values
+    # end
   end
 
 end
