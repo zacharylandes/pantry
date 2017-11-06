@@ -6,7 +6,8 @@ class Pantry
   @stock = Hash.new(0)
   @shopping_list = []
   @cook_book = []
-  @ingredients_list = []
+  @how_many = {}
+  # @ingredients_list = []
   @what_you_can_make = []
   end
 
@@ -34,33 +35,32 @@ class Pantry
 
   def add_to_cookbook(recipe)
     @cook_book << recipe
-    @ingredients_list << recipe.ingredients
+    # @ingredients_list << recipe.ingredients
   end
 
   def what_can_i_make
-    @what_you_can_make
+    # if how_many_can_i_make?
+    @cook_book.map {|recipe|recipe.name}
+  end
+
+  def ingredients
+     @cook_book.map {|c|c.ingredients}
   end
 
   def how_many_can_i_make
-    @ingredients_list.each do |ingredients|
+    ingredients.each do |ingredient|
      @stock.each do |stock_item,stock_amount|
-       if ingredients.has_key?(stock_item)
-        if stock_amount > ingredients[stock_item]
-          binding.pry
-          # @what_you_can_make << recipe.name
-          s = stock_amount/ingredients[stock]
-         binding.pry
-       else
-
-       end
-
+       if ingredient.has_key?(stock_item)
+        if stock_amount > ingredient[stock_item]
+          how_many = stock_amount/ingredient[stock_item]
+          @how_many[stock_item]=how_many
+          # binding.pry
+        else
+         false
+        end
       end
     end
-end
-    # @cook_book.map do |recipe|
-    #   # binding.pry
-    #  recipe.ingredients.values
-    # end
   end
+end
 
 end
