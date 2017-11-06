@@ -1,10 +1,12 @@
 require 'pry'
 class Pantry
-  attr_reader :stock, :shopping_list
+  attr_reader :stock, :shopping_list, :cook_book
 
   def initialize
   @stock = Hash.new(0)
   @shopping_list = []
+  @cook_book = []
+  @cook_book = []
   end
 
   def stock_check(item)
@@ -30,6 +32,18 @@ class Pantry
   end
 
   def add_to_cookbook(recipe)
+    @cook_book << recipe
+  end
+
+  def what_can_i_make
+    @cook_book.map do |recipe|
+      p recipe.name
+    end
+  end
+
+  def how_many_can_i_make
+    p @cook_book
+
   end
 
 end
