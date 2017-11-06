@@ -50,13 +50,23 @@ class PantryTest < Minitest::Test
 
   end
   def test_it_can_add_more_ingredients_to_the_list
-        pantry = Pantry.new
+      pantry = Pantry.new
+      r = Recipe.new("Spaghetti")
+      r.add_ingredient("Spaghetti Noodles", 10)
+      r.add_ingredient("Marinara Sauce", 10)
+      r.add_ingredient("Cheese", 5)
+      pantry.add_to_shopping_list(r)
 
-    r = Recipe.new("Spaghetti")
-    r.add_ingredient("Spaghetti Noodles", 10)
-    r.add_ingredient("Marinara Sauce", 10)
-    r.add_ingredient("Cheese", 5)
-    pantry.add_to_shopping_list(r)
       assert_equal 23, pantry.shopping_list
+  end
+  def test_it_can_print_shopping_list
+      pantry = Pantry.new
+      r = Recipe.new("Spaghetti")
+      r.add_ingredient("Spaghetti Noodles", 10)
+      r.add_ingredient("Marinara Sauce", 10)
+      r.add_ingredient("Cheese", 5)
+      pantry.add_to_shopping_list(r)
+
+      assert_equal 23, pantry.print_shopping_list
   end
 end
