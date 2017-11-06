@@ -3,7 +3,7 @@ class Pantry
 
   def initialize
   @stock = Hash.new(0)
-  @shopping_list = {}
+  @shopping_list = []
   end
 
   def stock_check(item)
@@ -16,7 +16,8 @@ class Pantry
   end
 
   def add_to_shopping_list(r)
-    @shopp
+     @shopping_list << r.ingredients
+     @shopping_list
 
   end
 
