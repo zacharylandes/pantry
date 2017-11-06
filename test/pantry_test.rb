@@ -1,4 +1,5 @@
 require './lib/pantry'
+require './lib/recipe'
 require 'minitest/autorun'
 require 'minitest/pride'
 
@@ -33,8 +34,20 @@ class PantryTest < Minitest::Test
      pantry.restock("cheese",10)
      pantry.restock("cheese",10)
 
-    # stock = pantry.stock
 
     assert_equal 30, pantry.stock_check("cheese")
   end
+  def test_it_can_add_ingredients_to_shopping_list
+    pantry = Pantry.new
+    r = Recipe.new("Cheese Pizza")
+    r.ingredients
+    r.add_ingredient("Cheese", 20)
+    r.add_ingredient("Flour", 20)
+    pantry.add_to_shopping_list(r)
+
+    assert_equal 12, pantry.shopping_list
+
+
+  end
+
 end
