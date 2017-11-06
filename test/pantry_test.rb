@@ -45,7 +45,7 @@ class PantryTest < Minitest::Test
     r.add_ingredient("Flour", 20)
     pantry.add_to_shopping_list(r)
 
-    assert_equal 12, pantry.shopping_list
+    assert_equal  ({"Cheese"=>20, "Flour"=>20}), pantry.shopping_list
 
 
   end
@@ -57,7 +57,7 @@ class PantryTest < Minitest::Test
       r.add_ingredient("Cheese", 5)
       pantry.add_to_shopping_list(r)
 
-      assert_equal 23, pantry.shopping_list
+      assert_equal ({"Spaghetti Noodles"=>10, "Marinara Sauce"=>10, "Cheese"=>5}), pantry.shopping_list
   end
   def test_it_can_print_shopping_list
       pantry = Pantry.new

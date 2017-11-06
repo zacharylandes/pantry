@@ -21,7 +21,11 @@ class Pantry
   end
 
   def print_shopping_list
-    
+    p @shopping_list.each
+    list = @shopping_list.each   do |item|
+      puts "*#{item}:"
+    end
+    #  list.flatten
   end
 
 end
