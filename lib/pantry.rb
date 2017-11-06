@@ -41,12 +41,12 @@ class Pantry
   end
 
   def how_many_can_i_make
-    @stock.map do |ingredient|
-        @cook_book.map do |recipe|
-           if recipe.ingredient_name == ingredient[0]
-             binding.pry
-           end
-        end
+    items = @cook_book.map {|ingredients|ingredients.ingredients.keys}.flatten
+    items.map do |item|
+      if @stock.include?(item)
+        if @stock[item] > 
+        binding.pry
+      end
       end
 
     # @cook_book.map do |recipe|
