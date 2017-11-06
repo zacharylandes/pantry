@@ -59,6 +59,7 @@ class PantryTest < Minitest::Test
 
       assert_equal ({"Spaghetti Noodles"=>10, "Marinara Sauce"=>10, "Cheese"=>5}), pantry.shopping_list
   end
+
   def test_it_can_print_shopping_list
       pantry = Pantry.new
       r = Recipe.new("Spaghetti")
@@ -66,7 +67,30 @@ class PantryTest < Minitest::Test
       r.add_ingredient("Marinara Sauce", 10)
       r.add_ingredient("Cheese", 5)
       pantry.add_to_shopping_list(r)
+      result = {"Spaghetti Noodles"=>10, "Marinara Sauce"=>10, "Cheese"=>5}
 
-      assert_equal 23, pantry.print_shopping_list
+      assert_equal result, pantry.print_shopping_list
+  end
+
+  def test_it_can_give_recipes
+    pantry = Pantry.new
+
+    r1 = Recipe.new("Cheese Pizza")
+    r1.add_ingredient("Cheese", 20)
+    r1.add_ingredient("Flour", 20)
+
+    r2 = Recipe.new("Pickles")
+    r2.add_ingredient("Brine", 10)
+    r2.add_ingredient("Cucumbers", 30)
+
+    r3 = Recipe.new("Peanuts")
+    r3.add_ingredient("Raw nuts", 10)
+    r3.add_ingredient("Salt", 10)
+
+    pantry.add_to_cookbook(r1)
+    pantry.add_to_cookbook(r2)
+    pantry.add_to_cookbook(r3)
+
+      assert_equal 23, pantry.add_to_cookbook
   end
 end

@@ -1,3 +1,4 @@
+require 'pry'
 class Pantry
   attr_reader :stock, :shopping_list
 
@@ -15,17 +16,20 @@ class Pantry
     @stock[item] += quantity
   end
 
-  def add_to_shopping_list(r)
-     @shopping_list << r.ingredients
+  def add_to_shopping_list(recipe)
+     @shopping_list << recipe.ingredients
      @shopping_list = @shopping_list.pop
+    #  binding.pry
   end
 
   def print_shopping_list
-    p @shopping_list.each
-    list = @shopping_list.each   do |item|
-      puts "*#{item}:"
+    # binding.pry
+    @shopping_list.each do |ingredients, amount|
+      puts "*#{ingredients}: #{amount}"
     end
-    #  list.flatten
+  end
+
+  def add_to_cookbook(recipe)
   end
 
 end
